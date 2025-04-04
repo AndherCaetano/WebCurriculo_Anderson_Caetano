@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -427,13 +426,17 @@
                     <i class="fas fa-phone"></i>
                     +55 21 98008-1646
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://github.com/AndherCaetano/" target="_blank">
                     <i class="fab fa-github"></i>
                     GitHub
                 </a>
-                <a href="#" target="_blank">
+                <a href="www.linkedin.com/in/andersoncaetanodevops" target="_blank">
                     <i class="fab fa-linkedin"></i>
                     LinkedIn
+                </a>
+                <a href="https://gabriellemoreira.com.br" target="_blank">
+                    <i class="fab fa-portifolio"></i>
+                    Portifólio
                 </a>
             </div>
         </div>

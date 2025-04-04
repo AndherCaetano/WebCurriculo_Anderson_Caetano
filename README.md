@@ -729,7 +729,7 @@
             
             setVH();
             window.addEventListener('resize', setVH);
-           });
+           
         });
     </script>
 </body>

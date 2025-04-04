@@ -729,8 +729,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setVH();
     window.addEventListener('resize', setVH); // Atualiza quando a tela gira
-});
-    
+}
+            });
+        });
     </script>
 </body>
 </html>

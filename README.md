@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #2563eb;       /* Modern blue */
             --primary-dark: #1e40af;
-            --secondary: #10b981;
-            --accent: #f59e0b;
+            --secondary: #10b981;     /* Teal */
+            --accent: #f59e0b;        /* Amber */
             --dark: #1f2937;
             --light: #f3f4f6;
             --gray: #6b7280;
@@ -21,27 +22,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
         }
         
         body {
             line-height: 1.6;
             color: var(--dark);
             background-color: #f9fafb;
-            -webkit-text-size-adjust: 100%;
         }
         
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 20px;
         }
         
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
-            padding: 25px 0;
+            padding: 30px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
@@ -57,26 +58,23 @@
         }
         
         header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             font-weight: 700;
-            padding: 0 15px;
         }
         
         header p {
-            font-size: 1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
             font-weight: 300;
-            padding: 0 15px;
         }
         
         .contact-info {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            padding: 0 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
         }
         
         .contact-info a {
@@ -89,94 +87,117 @@
             background-color: rgba(255,255,255,0.1);
             border-radius: 50px;
             transition: all 0.3s ease;
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
-            font-size: 0.9rem;
+        }
+        
+        .contact-info a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
         
         .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
         }
         
-        .sidebar, .content {
+        @media (min-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+        
+        .sidebar {
             background-color: var(--white);
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            width: 100%;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .content {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
         h2 {
             color: var(--primary);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--light-gray);
-            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            font-size: 1.5rem;
             font-weight: 600;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
         }
         
         h3 {
             color: var(--dark);
-            margin: 15px 0 8px;
-            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
         h4 {
             color: var(--primary);
-            margin: 12px 0 6px;
-            font-size: 1rem;
+            margin: 15px 0 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .job, .education {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .job-header, .education-header {
             display: flex;
-            flex-direction: column;
-            gap: 3px;
+            justify-content: space-between;
             margin-bottom: 8px;
+            flex-wrap: wrap;
         }
         
         .job-title, .education-title {
             font-weight: 600;
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .job-period, .education-period {
             color: var(--gray);
             font-style: italic;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
         
         .job-company, .education-institution {
             font-weight: 600;
             color: var(--secondary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
-            font-size: 0.95rem;
         }
         
         ul {
-            padding-left: 18px;
+            padding-left: 20px;
         }
         
         li {
             margin-bottom: 8px;
-            text-align: left;
+            text-align: justify;
             position: relative;
             padding-left: 15px;
-            font-size: 0.9rem;
-            line-height: 1.5;
         }
         
         li::before {
@@ -190,43 +211,65 @@
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         
         .skill-tag {
             background-color: var(--light);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             color: var(--dark);
             border: 1px solid var(--light-gray);
         }
         
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
         .filter-section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .filter-btn {
             background-color: var(--light);
             color: var(--dark);
             border: none;
-            padding: 12px 15px;
+            padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             width: 100%;
             text-align: left;
+            transition: all 0.3s ease;
             font-weight: 500;
-            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
         }
         
         .filter-btn .arrow {
             transition: transform 0.3s;
             margin-left: auto;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active .arrow {
+            transform: rotate(180deg);
         }
         
         .filter-content {
@@ -235,89 +278,137 @@
             transition: max-height 0.4s ease-out;
         }
         
-        .presentation-letter {
-            text-align: left;
-            line-height: 1.6;
-            font-size: 0.9rem;
+        .filter-content.show {
+            max-height: 10000px;
         }
         
-        .professional-summary, .technical-skills {
-            padding: 15px;
-            border-radius: 8px;
+        .presentation-letter {
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .presentation-letter p {
+            margin-bottom: 15px;
+        }
+        
+        .presentation-letter ul {
             margin-bottom: 20px;
-            font-size: 0.9rem;
+        }
+        
+        .presentation-letter li {
+            margin-bottom: 10px;
+        }
+        
+        .signature {
+            font-style: italic;
+            margin-top: 25px;
+            color: var(--gray);
         }
         
         .results {
-            padding: 15px;
+            background-color: #f0fdf4;
+            padding: 18px;
             border-radius: 8px;
-            margin: 15px 0;
-            font-size: 0.9rem;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .results h4 {
+            margin-top: 0;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .results h4 i {
+            color: var(--secondary);
+        }
+        
+        .professional-summary {
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .professional-summary p {
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .technical-skills {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .skills-category {
+            margin-bottom: 15px;
+        }
+        
+        .skills-category h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skills-category h4 i {
+            color: var(--accent);
         }
         
         footer {
             text-align: center;
-            padding: 20px 15px;
-            font-size: 0.85rem;
+            padding: 25px;
+            background-color: var(--dark);
+            color: var(--white);
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
-
-        /* Media Queries para tablets */
-        @media (min-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            
+        
+        @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
             }
             
-            .contact-info {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+            .job-header, .education-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .job-period, .education-period {
+                margin-top: 0;
             }
             
             .contact-info a {
-                max-width: none;
-                width: auto;
-                padding: 8px 15px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
             }
         }
-
-        /* Media Queries para desktop */
-        @media (min-width: 992px) {
-            .main-content {
-                flex-direction: row;
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
             }
             
-            .sidebar {
-                width: 35%;
+            header p {
+                font-size: 1rem;
             }
             
-            .content {
-                width: 65%;
-            }
-        }
-
-        /* Ajustes específicos para iOS */
-        @supports (-webkit-touch-callout: none) {
-            body {
-                -webkit-font-smoothing: antialiased;
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
             }
             
             .filter-btn {
-                padding: 14px 15px;
-            }
-        }
-
-        /* Ajustes específicos para Android */
-        @supports (-webkit-overflow-scrolling: touch) {
-            body {
-                -webkit-text-size-adjust: none;
-            }
-            
-            li {
-                line-height: 1.6;
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -332,21 +423,17 @@
                     <i class="fas fa-envelope"></i>
                     andersonsilcaetano@icloud.com
                 </a>
-                <a href="https://api.whatsapp.com/send/?phone=5521980081646&text&type=phone_number&app_absent=0">
+                <a href="tel:+5521980081646">
                     <i class="fas fa-phone"></i>
                     +55 21 98008-1646
                 </a>
-                <a href="https://github.com/AndherCaetano/" target="_blank">
+                <a href="#" target="_blank">
                     <i class="fab fa-github"></i>
                     GitHub
                 </a>
-                <a href="www.linkedin.com/in/andersoncaetanodevops" target="_blank">
+                <a href="#" target="_blank">
                     <i class="fab fa-linkedin"></i>
                     LinkedIn
-                </a>
-                <a href="https://gabriellemoreira.com.br" target="_blank">
-                    <i class="fab fa-portifolio"></i>
-                    Portifólio
                 </a>
             </div>
         </div>
@@ -704,7 +791,7 @@
     </footer>
     
     <script>
-function toggleFilter(id) {
+        function toggleFilter(id) {
             const content = document.getElementById(id);
             const button = document.querySelector(`button[onclick="toggleFilter('${id}')]`);
             

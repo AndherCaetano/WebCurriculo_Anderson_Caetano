@@ -332,7 +332,7 @@
                     <i class="fas fa-envelope"></i>
                     andersonsilcaetano@icloud.com
                 </a>
-                <a href="tel:+5521980081646">
+                <a href="https://api.whatsapp.com/send/?phone=5521980081646&text&type=phone_number&app_absent=0">
                     <i class="fas fa-phone"></i>
                     +55 21 98008-1646
                 </a>

@@ -3,28 +3,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anderson Caetano - Desenvolvedor Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --text-light: #7f8c8d;
+            --primary: #2563eb;       /* Modern blue */
+            --primary-dark: #1e40af;
+            --secondary: #10b981;     /* Teal */
+            --accent: #f59e0b;        /* Amber */
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --white: #ffffff;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
         }
         
         body {
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f5f5f5;
+            color: var(--dark);
+            background-color: #f9fafb;
         }
         
         .container {
@@ -34,21 +37,35 @@
         }
         
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 30px 0;
             text-align: center;
-            border-bottom: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
         }
         
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            font-weight: 700;
         }
         
         header p {
             font-size: 1.2rem;
             opacity: 0.9;
+            font-weight: 300;
         }
         
         .contact-info {
@@ -56,87 +73,119 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         
         .contact-info a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            padding: 8px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
         
         .contact-info a:hover {
-            color: var(--secondary-color);
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
         
         .main-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
             .main-content {
                 grid-template-columns: 1fr 2fr;
             }
         }
         
         .sidebar {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
         .content {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
         h2 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            color: var(--primary);
+            margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--light-gray);
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
         }
         
         h3 {
-            color: var(--dark-color);
-            margin: 15px 0 10px;
+            color: var(--dark);
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: var(--primary);
+            margin: 15px 0 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .job, .education {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .job-header, .education-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
         }
         
         .job-title, .education-title {
-            font-weight: bold;
-            color: var(--primary-color);
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
         }
         
         .job-period, .education-period {
-            color: var(--text-light);
+            color: var(--gray);
             font-style: italic;
+            font-size: 0.9rem;
         }
         
         .job-company, .education-institution {
-            font-weight: bold;
-            color: var(--secondary-color);
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: block;
         }
         
         ul {
@@ -144,8 +193,18 @@
         }
         
         li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-align: justify;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
         
         .skills {
@@ -155,38 +214,57 @@
         }
         
         .skill-tag {
-            background-color: var(--light-color);
-            padding: 5px 10px;
+            background-color: var(--light);
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .filter-section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .filter-btn {
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: var(--light);
+            color: var(--dark);
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            margin-bottom: 10px;
+            gap: 10px;
+            margin-bottom: 15px;
             width: 100%;
             text-align: left;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         
         .filter-btn:hover {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
         }
         
         .filter-btn .arrow {
             transition: transform 0.3s;
             margin-left: auto;
+            font-size: 0.9rem;
         }
         
         .filter-btn.active .arrow {
@@ -196,16 +274,16 @@
         .filter-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s ease-out;
         }
         
         .filter-content.show {
-            max-height: 1000px;
+            max-height: 10000px;
         }
         
         .presentation-letter {
             text-align: justify;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .presentation-letter p {
@@ -213,24 +291,83 @@
         }
         
         .presentation-letter ul {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .presentation-letter li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .signature {
             font-style: italic;
-            margin-top: 20px;
+            margin-top: 25px;
+            color: var(--gray);
+        }
+        
+        .results {
+            background-color: #f0fdf4;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .results h4 {
+            margin-top: 0;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .results h4 i {
+            color: var(--secondary);
+        }
+        
+        .professional-summary {
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .professional-summary p {
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .technical-skills {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .skills-category {
+            margin-bottom: 15px;
+        }
+        
+        .skills-category h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skills-category h4 i {
+            color: var(--accent);
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            margin-top: 30px;
+            padding: 25px;
+            background-color: var(--dark);
+            color: var(--white);
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -240,10 +377,16 @@
             
             .job-header, .education-header {
                 flex-direction: column;
+                gap: 5px;
             }
             
             .job-period, .education-period {
-                margin-top: 5px;
+                margin-top: 0;
+            }
+            
+            .contact-info a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
             }
         }
         
@@ -252,10 +395,19 @@
                 font-size: 1.8rem;
             }
             
+            header p {
+                font-size: 1rem;
+            }
+            
             .contact-info {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -267,28 +419,24 @@
             <p>Desenvolvedor Full Stack | Front-end Specialist</p>
             <div class="contact-info">
                 <a href="mailto:andersonsilcaetano@icloud.com">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                    </svg>
+                    <i class="fas fa-envelope"></i>
                     andersonsilcaetano@icloud.com
                 </a>
                 <a href="tel:+5521980081646">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                    </svg>
+                    <i class="fas fa-phone"></i>
                     +55 21 98008-1646
                 </a>
-                <a href="#" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
+                <a href="https://github.com/AndherCaetano/" target="_blank">
+                    <i class="fab fa-github"></i>
                     GitHub
                 </a>
-                <a href="#" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
+                <a href="www.linkedin.com/in/andersoncaetanodevops" target="_blank">
+                    <i class="fab fa-linkedin"></i>
                     LinkedIn
+                </a>
+                <a href="https://gabriellemoreira.com.br" target="_blank">
+                    <i class="fab fa-portifolio"></i>
+                    Portifólio
                 </a>
             </div>
         </div>
@@ -315,33 +463,6 @@
                 </div>
                 
                 <div class="section">
-                    <h2>Habilidades Técnicas</h2>
-                    <div class="skills">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Laravel</span>
-                        <span class="skill-tag">CMS Personalizado</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Zendesk</span>
-                        <span class="skill-tag">Freshdesk</span>
-                        <span class="skill-tag">Salesforce</span>
-                        <span class="skill-tag">APIs</span>
-                        <span class="skill-tag">Webhooks</span>
-                        <span class="skill-tag">UX/UI Design</span>
-                        <span class="skill-tag">SEO</span>
-                        <span class="skill-tag">Redes</span>
-                        <span class="skill-tag">VOIP</span>
-                        <span class="skill-tag">Windows Server</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Excel Avançado</span>
-                    </div>
-                </div>
-                
-                <div class="section">
                     <h2>Certificações</h2>
                     <ul>
                         <li>AWS Academy Cloud Developing - Amazon Web Services (2022)</li>
@@ -354,10 +475,58 @@
             </div>
             
             <div class="content">
+                <div class="section">
+                    <div class="professional-summary">
+                        <h2>Resumo Profissional</h2>
+                        <p>Profissional com experiência em Suporte Técnico (N1/N2) e infraestrutura de redes, atuando em empresas como Contax (Oi Telecom) e Home Agent (Seguradora Líder DPVAT). Especializado em atendimento ao cliente multicanal (Unnichat, SendFlow, Live) e gestão de tickets em sistemas como Zendesk, Freshdesk e ERPs proprietários. Domínio em suporte remoto, automação de processos (Webhooks, APIs do Google e WhatsApp Oficial Meta) e integração de dados e IA. Experiência prática em soluções de TI, incluindo redes (Fibra), AWS Cloud, Windows e ferramentas de comunicação (VOIP - Neon Now, CloudTalk, ManyChat). Desenvolvimento Full Stack (HTML, CSS, JavaScript, back-end) aplicado a troubleshooting (problemas) e otimização de sistemas. Certificações(02) em AWS, Redes e Segurança da Informação.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="technical-skills">
+                        <h2>Habilidades Técnicas</h2>
+                        <div class="skills-category">
+                            <h4><i class="fas fa-network-wired"></i> Infraestrutura & Redes</h4>
+                            <ul>
+                                <li>Configuração de redes (DNS, DHCP)</li>
+                                <li>Cabeamento RJ45, crimpagem, roteadores</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skills-category">
+                            <h4><i class="fas fa-code"></i> Desenvolvimento & Automação</h4>
+                            <ul>
+                                <li>HTML, CSS, JavaScript</li>
+                                <li>Suporte a APIs (Google, WhatsApp Meta)</li>
+                                <li>SQL básico para análise de dados</li>
+                                <li>Webhooks para automação de sistemas</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skills-category">
+                            <h4><i class="fas fa-headset"></i> Suporte Técnico</h4>
+                            <ul>
+                                <li>Atendimento multicanal (chat, telefone, CRM)</li>
+                                <li>Suporte remoto (AnyDesk, TeamViewer)</li>
+                                <li>Resolução de problemas N1/N2/N3</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skills-category">
+                            <h4><i class="fas fa-tools"></i> Ferramentas & Sistemas</h4>
+                            <ul>
+                                <li>CRMs: Zendesk, Freshdesk, sistemas proprietários (Oi Telecom, DPVAT)</li>
+                                <li>Gestão de tickets, VOIP (CloudTalk, Neon Now), Manychat</li>
+                                <li>ERP/CRM: Integração de dados, automação via scripts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="section filter-section">
                     <button class="filter-btn" onclick="toggleFilter('presentation-letter')">
                         <span>Carta de Apresentação</span>
-                        <span class="arrow">▼</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="filter-content" id="presentation-letter">
                         <div class="presentation-letter">
@@ -381,7 +550,7 @@
                 <div class="section filter-section">
                     <button class="filter-btn" onclick="toggleFilter('professional-experience')">
                         <span>Experiência Profissional</span>
-                        <span class="arrow">▼</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="filter-content show" id="professional-experience">
                         <div class="job">
@@ -401,163 +570,215 @@
                             </ul>
                         </div>
                         
-                        <div class="job">
-                            <div class="job-header">
-                                <span class="job-title">Analista de Suporte e SAC</span>
-                                <span class="job-period">Jun/2016 – Jan/2018 (Home Office)</span>
+                        <div class="job filter-section">
+                            <button class="filter-btn" onclick="toggleFilter('seguradora-lider')">
+                                <div class="job-header">
+                                    <span class="job-title">Analista de Suporte e SAC</span>
+                                    <span class="job-period">Jun/2016 – Jan/2018 (Home Office)</span>
+                                </div>
+                                <div class="job-company">Seguradora Líder DPVAT (Home Agent)</div>
+                                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                            </button>
+                            <div class="filter-content show" id="seguradora-lider">
+                                <ul>
+                                    <li><strong>Atendimento ao Cliente Multicanal:</strong>
+                                        <ul>
+                                            <li>Suporte via chat (ManyChat) e telefone VOIP (Neon Now, CloudTalk), incluindo suporte a PCDs.</li>
+                                            <li>Orientação sobre trâmites do DPVAT: entrada de processos, documentação necessária (ex: laudos médicos, BOs), status de pagamentos e baixa do seguro.</li>
+                                            <li>Resolução de dúvidas complexas sobre sinistros, prazos e conformidade legal.</li>
+                                            <li>Scripts padronizados para agilizar respostas (FAQ interno) e garantir uniformidade nas informações.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ferramentas:</strong>
+                                        <ul>
+                                            <li>Plataformas de atendimento equivalentes a Unnichat/SendFlow (multicanal).</li>
+                                            <li>Sistemas VOIP (Neon Now, CloudTalk) e ManyChat para automação de interações via chat.</li>
+                                            <li>CRM/ERP proprietário para gestão de sinistros, validação de documentos, atualização em massa de status.</li>
+                                            <li>Integração de dados entre sistemas via APIs ou planilhas (Excel/Google Sheets).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Gestão de Dados e Processos:</strong>
+                                        <ul>
+                                            <li>Geração de relatórios estatísticos (volume de demandas, tempo médio de resolução).</li>
+                                            <li>Identificação de padrões recorrentes para otimizar fluxos (documentos mais solicitados).</li>
+                                            <li>Análise de inconsistências em processos (documentos incompletos, divergências cadastrais).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="results">
+                                    <h4><i class="fas fa-chart-line"></i> Resultados e Métricas</h4>
+                                    <ul>
+                                        <li>Redução de 30% no tempo de processamento de sinistros após automação de etapas</li>
+                                        <li>Aumento de 25% na satisfação do cliente (pesquisas pós-atendimento)</li>
+                                        <li>Diminuição de inconsistências em processos devido à padronização de documentação</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="job-company">Seguradora Líder DPVAT (Home Agent)</div>
-                            <ul>
-                                <li><strong>Atendimento ao Cliente Multicanal:</strong>
-                                    <ul>
-                                        <li>Suporte via chat (ManyChat) e telefone VOIP (Neon Now, CloudTalk), incluindo suporte a PCDs.</li>
-                                        <li>Orientação sobre trâmites do DPVAT: entrada de processos, documentação necessária (ex: laudos médicos, BOs), status de pagamentos e baixa do seguro.</li>
-                                        <li>Resolução de dúvidas complexas sobre sinistros, prazos e conformidade legal.</li>
-                                        <li>Scripts padronizados para agilizar respostas (FAQ interno) e garantir uniformidade nas informações.</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Ferramentas:</strong>
-                                    <ul>
-                                        <li>Plataformas de atendimento equivalentes a Unnichat/SendFlow (multicanal).</li>
-                                        <li>Sistemas VOIP (Neon Now, CloudTalk) e ManyChat para automação de interações via chat.</li>
-                                        <li>CRM/ERP proprietário para gestão de sinistros, validação de documentos, atualização em massa de status.</li>
-                                        <li>Integração de dados entre sistemas via APIs ou planilhas (Excel/Google Sheets).</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Gestão de Dados e Processos:</strong>
-                                    <ul>
-                                        <li>Geração de relatórios estatísticos (volume de demandas, tempo médio de resolução).</li>
-                                        <li>Identificação de padrões recorrentes para otimizar fluxos (documentos mais solicitados).</li>
-                                        <li>Análise de inconsistências em processos (documentos incompletos, divergências cadastrais).</li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                         
-                        <div class="job">
-                            <div class="job-header">
-                                <span class="job-title">Suporte Técnico Oi Fibra</span>
-                                <span class="job-period">Jun/2013 – Jan/2016 (Presencial)</span>
+                        <div class="job filter-section">
+                            <button class="filter-btn" onclick="toggleFilter('contax-oi')">
+                                <div class="job-header">
+                                    <span class="job-title">Suporte Técnico Oi Fibra</span>
+                                    <span class="job-period">Jun/2013 – Jan/2016 (Presencial)</span>
+                                </div>
+                                <div class="job-company">Contax/Liq S/A</div>
+                                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                            </button>
+                            <div class="filter-content show" id="contax-oi">
+                                <ul>
+                                    <li><strong>Atendimento Multicanal ao Cliente:</strong>
+                                        <ul>
+                                            <li>Prestação de suporte técnico N1 e N2 para clientes Oi Fibra (Banda Larga).</li>
+                                            <li>Diagnóstico remoto de falhas em redes ADSL/VDSL (testes de linha, sincronização de router).</li>
+                                            <li>Acesso remoto (via TeamViewer/AnyDesk) para configuração de dispositivos dos clientes.</li>
+                                            <li>Escalonamento para N3 em casos complexos (problemas na infraestrutura Oi).</li>
+                                            <li>Configuração de conexão, instalação, detecção e configuração em roteadores (TP-Link, Huawei), configuração TCP/IP, DNS, DHCP, análise de logs.</li>
+                                            <li>Uso de scripts padronizados para orientação sobre falhas comuns (lentidão, instabilidade, bloqueio de MAC).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ferramentas de Atendimento:</strong>
+                                        <ul>
+                                            <li>Sistemas Unnichat, SendFlow (atendimento simultâneo em múltiplos canais).</li>
+                                            <li>Plataformas de Live Chat e Unni IA para agilizar respostas automatizadas.</li>
+                                            <li>Integração entre CRM e ferramentas de cobrança via APIs.</li>
+                                            <li>Sistemas Windows, Linux e MacOS (básico), SAP (módulo de suporte) e Twilio Flex (chamadas VoIP).</li>
+                                            <li>Configuração de Webhooks para notificações de falhas e alertas críticos.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Gestão de Tickets e CRM:</strong>
+                                        <ul>
+                                            <li>Zendesk e Freshdesk para registro, triagem e acompanhamento de chamados.</li>
+                                            <li>Salesforce/ERP proprietário para consulta de dados cadastrais, contratos e histórico do cliente.</li>
+                                            <li>Recebimento, criação e encerramento de tickets conforme SLA (transbordos nos níveis N1 a N3).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="results">
+                                    <h4><i class="fas fa-chart-line"></i> Resultados</h4>
+                                    <ul>
+                                        <li>Alta taxa de resolução no primeiro contato (N1/N2)</li>
+                                        <li>Redução de 20% no tempo de atendimento após automação de processos</li>
+                                        <li>Métricas de feedback positivo em pesquisas de satisfação (CSAT acima de 85%)</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="job-company">Contax/Liq S/A</div>
-                            <ul>
-                                <li><strong>Atendimento Multicanal ao Cliente:</strong>
-                                    <ul>
-                                        <li>Prestação de suporte técnico N1 e N2 para clientes Oi Fibra (Banda Larga).</li>
-                                        <li>Diagnóstico remoto de falhas em redes ADSL/VDSL (testes de linha, sincronização de router).</li>
-                                        <li>Acesso remoto (via TeamViewer/AnyDesk) para configuração de dispositivos dos clientes.</li>
-                                        <li>Escalonamento para N3 em casos complexos (problemas na infraestrutura Oi).</li>
-                                        <li>Configuração de conexão, instalação, detecção e configuração em roteadores (TP-Link, Huawei), configuração TCP/IP, DNS, DHCP, análise de logs.</li>
-                                        <li>Uso de scripts padronizados para orientação sobre falhas comuns (lentidão, instabilidade, bloqueio de MAC).</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Ferramentas de Atendimento:</strong>
-                                    <ul>
-                                        <li>Sistemas Unnichat, SendFlow (atendimento simultâneo em múltiplos canais).</li>
-                                        <li>Plataformas de Live Chat e Unni IA para agilizar respostas automatizadas.</li>
-                                        <li>Integração entre CRM e ferramentas de cobrança via APIs.</li>
-                                        <li>Sistemas Windows, Linux e MacOS (básico), SAP (módulo de suporte) e Twilio Flex (chamadas VoIP).</li>
-                                        <li>Configuração de Webhooks para notificações de falhas e alertas críticos.</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Gestão de Tickets e CRM:</strong>
-                                    <ul>
-                                        <li>Zendesk e Freshdesk para registro, triagem e acompanhamento de chamados.</li>
-                                        <li>Salesforce/ERP proprietário para consulta de dados cadastrais, contratos e histórico do cliente.</li>
-                                        <li>Recebimento, criação e encerramento de tickets conforme SLA (transbordos nos níveis N1 a N3).</li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                         
-                        <div class="job">
-                            <div class="job-header">
-                                <span class="job-title">Analista de BackOffice</span>
-                                <span class="job-period">Jun/2010 – Jan/2013 (Presencial)</span>
+                        <div class="job filter-section">
+                            <button class="filter-btn" onclick="toggleFilter('contax-backoffice')">
+                                <div class="job-header">
+                                    <span class="job-title">Analista de BackOffice</span>
+                                    <span class="job-period">Jun/2010 – Jan/2013 (Presencial)</span>
+                                </div>
+                                <div class="job-company">Contax/Liq S/A</div>
+                                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                            </button>
+                            <div class="filter-content show" id="contax-backoffice">
+                                <ul>
+                                    <li><strong>Principais Atividades:</strong>
+                                        <ul>
+                                            <li>Resolução técnica de casos complexos (telefonia fixa/móvel, banda larga Oi, TV por assinatura).</li>
+                                            <li>Tratamento de demandas judiciais e regulatórias (PROCON, Juizado, Anatel - ODCs/PADOs/DOCs).</li>
+                                            <li>Gestão integral de tickets críticos (abertura, acompanhamento e solução) com SLA rígido.</li>
+                                            <li>Análise e correção sistêmica de falhas (faturamento, cadastro, provisionamento).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Tratamento de Casos Complexos:</strong>
+                                        <ul>
+                                            <li>Solução de demandas não resolvidas pelo atendimento inicial (N1/N2), incluindo:
+                                                <ul>
+                                                    <li>Faturamento incorreto (ajuste de valores, reembolsos, cobranças indevidas).</li>
+                                                    <li>Problemas cadastrais (migração de planos, portabilidade, bloqueios indevidos).</li>
+                                                    <li>Falhas técnicas em serviços de telefonia fixa/móvel e banda larga (Oi Fibra).</li>
+                                                    <li>Análise de inconsistências em sistemas de faturamento e cadastro (valores divergentes, planos não aplicados).</li>
+                                                </ul>
+                                            </li>
+                                            <li>Colaboração com equipes de TI e desenvolvimento para correção de bugs (scripts em SQL, ajustes em códigos-fonte).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ferramentas e Técnicas Utilizadas:</strong>
+                                        <ul>
+                                            <li>Sistemas Corporativos: SAP CRM proprietário, Oi Telecom, GS3 (sistema de gestão de serviços técnicos da Oi).</li>
+                                            <li>Redes e Telecom: Knowledge Base Oi, análise de logs (DSLAM, RAS), protocolos TCP/IP, ipconfig.</li>
+                                            <li>Gestão de Tickets: Zendesk, Clarify, CRM Salesforce.</li>
+                                            <li>Ferramentas Regulatórias: Anatel Consumidor, PROCON Digital.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Competências Técnicas:</strong>
+                                        <ul>
+                                            <li>Domínio completo do ecossistema Oi (fixo/móvel/banda larga).</li>
+                                            <li>Habilidade em debugging de sistemas de faturamento e provisionamento.</li>
+                                            <li>Desenvolvimento de manuais técnicos e fluxogramas de processos.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="results">
+                                    <h4><i class="fas fa-chart-line"></i> Resultados</h4>
+                                    <ul>
+                                        <li>92% de resolução na primeira análise (N3)</li>
+                                        <li>Redução de 40% no backlog de casos judiciais</li>
+                                        <li>100% de compliance em prazos Anatel (72h para ODCs)</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="job-company">Contax/Liq S/A</div>
-                            <ul>
-                                <li><strong>Principais Atividades:</strong>
-                                    <ul>
-                                        <li>Resolução técnica de casos complexos (telefonia fixa/móvel, banda larga Oi, TV por assinatura).</li>
-                                        <li>Tratamento de demandas judiciais e regulatórias (PROCON, Juizado, Anatel - ODCs/PADOs/DOCs).</li>
-                                        <li>Gestão integral de tickets críticos (abertura, acompanhamento e solução) com SLA rígido.</li>
-                                        <li>Análise e correção sistêmica de falhas (faturamento, cadastro, provisionamento).</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Tratamento de Casos Complexos:</strong>
-                                    <ul>
-                                        <li>Solução de demandas não resolvidas pelo atendimento inicial (N1/N2), incluindo:
-                                            <ul>
-                                                <li>Faturamento incorreto (ajuste de valores, reembolsos, cobranças indevidas).</li>
-                                                <li>Problemas cadastrais (migração de planos, portabilidade, bloqueios indevidos).</li>
-                                                <li>Falhas técnicas em serviços de telefonia fixa/móvel e banda larga (Oi Fibra).</li>
-                                                <li>Análise de inconsistências em sistemas de faturamento e cadastro (valores divergentes, planos não aplicados).</li>
-                                            </ul>
-                                        </li>
-                                        <li>Colaboração com equipes de TI e desenvolvimento para correção de bugs (scripts em SQL, ajustes em códigos-fonte).</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Ferramentas e Técnicas Utilizadas:</strong>
-                                    <ul>
-                                        <li>Sistemas Corporativos: SAP CRM proprietário, Oi Telecom, GS3 (sistema de gestão de serviços técnicos da Oi).</li>
-                                        <li>Redes e Telecom: Knowledge Base Oi, análise de logs (DSLAM, RAS), protocolos TCP/IP, ipconfig.</li>
-                                        <li>Gestão de Tickets: Zendesk, Clarify, CRM Salesforce.</li>
-                                        <li>Ferramentas Regulatórias: Anatel Consumidor, PROCON Digital.</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Competências Técnicas:</strong>
-                                    <ul>
-                                        <li>Domínio completo do ecossistema Oi (fixo/móvel/banda larga).</li>
-                                        <li>Habilidade em debugging de sistemas de faturamento e provisionamento.</li>
-                                        <li>Desenvolvimento de manuais técnicos e fluxogramas de processos.</li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                         
-                        <div class="job">
-                            <div class="job-header">
-                                <span class="job-title">Administrativo Geral</span>
-                                <span class="job-period">Fev/1999 – Set/2009 (Presencial)</span>
+                        <div class="job filter-section">
+                            <button class="filter-btn" onclick="toggleFilter('gpa')">
+                                <div class="job-header">
+                                    <span class="job-title">Administrativo Geral</span>
+                                    <span class="job-period">Fev/1999 – Set/2009 (Presencial)</span>
+                                </div>
+                                <div class="job-company">GPA – Grupo Pão de Açúcar</div>
+                                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                            </button>
+                            <div class="filter-content show" id="gpa">
+                                <ul>
+                                    <li><strong>Principais Atividades:</strong>
+                                        <ul>
+                                            <li><strong>Gestão Multidisciplinar:</strong> Atuação em RH, Administração, Almoxarifado, Compras e TI.</li>
+                                            <li><strong>Rotinas Administrativas:</strong>
+                                                <ul>
+                                                    <li>Controle de documentos e planilhas (Excel avançado).</li>
+                                                    <li>Gestão de folha de pagamento e registros de ponto.</li>
+                                                    <li>Integração de dados entre filiais e matriz.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Suporte Técnico:</strong>
+                                                <ul>
+                                                    <li>Manutenção de desktops, PDVs e infraestrutura de rede.</li>
+                                                    <li>Instalação de softwares e backups de sistemas.</li>
+                                                    <li>Configuração de servidores locais.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ferramentas e Sistemas:</strong>
+                                        <ul>
+                                            <li>Pacote Office (Excel, Word, Outlook, PowerPoint).</li>
+                                            <li>Sistemas ERP corporativos (gestão de estoque e compras).</li>
+                                            <li>Ferramentas de RH (controle de ponto digital).</li>
+                                            <li>Software de backup e manutenção remota.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Competências Desenvolvidas:</strong>
+                                        <ul>
+                                            <li>Visão estratégica para otimização de processos.</li>
+                                            <li>Capacidade de resolver problemas técnicos e operacionais.</li>
+                                            <li>Adaptabilidade entre áreas distintas (de RH a TI).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="results">
+                                    <h4><i class="fas fa-chart-line"></i> Resultados</h4>
+                                    <ul>
+                                        <li>Padronização de 90% dos processos administrativos da filial</li>
+                                        <li>Redução de 30% no tempo de processamento de folha de pagamento</li>
+                                        <li>Implementação de sistema de backup que evitou perda crítica de dados</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="job-company">GPA – Grupo Pão de Açúcar</div>
-                            <ul>
-                                <li><strong>Principais Atividades:</strong>
-                                    <ul>
-                                        <li><strong>Gestão Multidisciplinar:</strong> Atuação em RH, Administração, Almoxarifado, Compras e TI.</li>
-                                        <li><strong>Rotinas Administrativas:</strong>
-                                            <ul>
-                                                <li>Controle de documentos e planilhas (Excel avançado).</li>
-                                                <li>Gestão de folha de pagamento e registros de ponto.</li>
-                                                <li>Integração de dados entre filiais e matriz.</li>
-                                            </ul>
-                                        </li>
-                                        <li><strong>Suporte Técnico:</strong>
-                                            <ul>
-                                                <li>Manutenção de desktops, PDVs e infraestrutura de rede.</li>
-                                                <li>Instalação de softwares e backups de sistemas.</li>
-                                                <li>Configuração de servidores locais.</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><strong>Ferramentas e Sistemas:</strong>
-                                    <ul>
-                                        <li>Pacote Office (Excel, Word, Outlook, PowerPoint).</li>
-                                        <li>Sistemas ERP corporativos (gestão de estoque e compras).</li>
-                                        <li>Ferramentas de RH (controle de ponto digital).</li>
-                                        <li>Software de backup e manutenção remota.</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Competências Desenvolvidas:</strong>
-                                    <ul>
-                                        <li>Visão estratégica para otimização de processos.</li>
-                                        <li>Capacidade de resolver problemas técnicos e operacionais.</li>
-                                        <li>Adaptabilidade entre áreas distintas (de RH a TI).</li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

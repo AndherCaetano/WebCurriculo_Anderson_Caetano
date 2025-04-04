@@ -705,31 +705,20 @@
     
     <script>
 function toggleFilter(id) {
-    const content = document.getElementById(id);
-    const button = document.querySelector(`button[onclick="toggleFilter('${id}')]`);
-    
-    content.classList.toggle('show');
-    button.classList.toggle('active');
-}
-
-// Initialize all filter contents as shown except presentation letter
-document.addEventListener('DOMContentLoaded', function() {
-    const filterContents = document.querySelectorAll('.filter-content');
-    filterContents.forEach(content => {
-        if (content.id !== 'presentation-letter') {
-            content.classList.add('show');
+            const content = document.getElementById(id);
+            const button = document.querySelector(`button[onclick="toggleFilter('${id}')]`);
+            
+            content.classList.toggle('show');
+            button.classList.toggle('active');
         }
-    });
-
-    // iOS viewport height fix (Novo)
-    function setVH() {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    setVH();
-    window.addEventListener('resize', setVH); // Atualiza quando a tela gira
-}
+        
+        // Initialize all filter contents as shown except presentation letter
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterContents = document.querySelectorAll('.filter-content');
+            filterContents.forEach(content => {
+                if (content.id !== 'presentation-letter') {
+                    content.classList.add('show');
+                }
             });
         });
     </script>
